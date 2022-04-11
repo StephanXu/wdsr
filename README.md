@@ -29,12 +29,20 @@ conda install tensorboard h5py scikit-image
 pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" git+https://github.com/NVIDIA/apex.git
 ```
 
+> Visual Studio 2019 might need apex commit: 2ec84ebdca59278eaf15e8ddf32476d9d6d8b904
+
 ### Evaluation
 
 ```bash
 python trainer.py --dataset div2k --eval_datasets div2k set5 bsds100 urban100 --model wdsr --scale 2 --job_dir ./wdsr_x2 --eval_only
 # or
 python trainer.py --dataset div2k --eval_datasets div2k set5 bsds100 urban100 --model wdsr --scale 2 --job_dir ./wdsr_x2 --ckpt ./latest.pth --eval_only
+```
+
+### Prediction
+
+```bash
+python predict.py --model wdsr --scale 4 --ckpt ./wdsr_x4/epoch_30.pth --input_dir /path/to/input_dir --outdir /path/to/output_dir
 ```
 
 ## Datasets
